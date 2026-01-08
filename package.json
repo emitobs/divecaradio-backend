@@ -1,0 +1,62 @@
+{
+  "name": "divecaradio-chat",
+  "version": "2.0.0",
+  "description": "Sistema de chat en tiempo real para Diveca Radio",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "cross-env NODE_ENV=development node app.js",
+    "prod": "cross-env NODE_ENV=production node app.js",
+    "promote:admin": "node scripts/promote-admin.js",
+    "migrate": "node scripts/migrate-database.js",
+    "setup": "npm run migrate && node scripts/setup-database.js",
+    "test": "node scripts/test-basic.js",
+    "health": "node scripts/health-check.js",
+    "postinstall": "node scripts/setup-database.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tu-usuario/divecaradio-chat.git"
+  },
+  "keywords": [
+    "radio",
+    "chat",
+    "websocket",
+    "authentication",
+    "real-time",
+    "streaming",
+    "broadcast",
+    "mysql",
+    "express",
+    "nodejs"
+  ],
+  "author": {
+    "name": "Erizos DevOps",
+    "email": "contact@erizos.dev",
+    "url": "https://erizos.dev"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.0",
+    "express": "^4.18.2",
+    "express-rate-limit": "^6.7.0",
+    "express-session": "^1.18.1",
+    "helmet": "^6.1.5",
+    "mysql2": "^3.14.1",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
+    "winston": "^3.17.0",
+    "ws": "^8.18.2"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "cross-env": "^7.0.3"
+  }
+}
