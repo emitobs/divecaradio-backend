@@ -1,12 +1,6 @@
 ﻿/* eslint-disable import/no-commonjs */
 /* eslint-env node, commonjs */
 
-// Detectar si estamos bajo Passenger
-let isPassenger = false;
-if (typeof(PhusionPassenger) !== 'undefined') {
-  isPassenger = true;
-}
-
 const express = require('express');
 const http = require('http');
 const WebSocket = require('ws');
@@ -111,7 +105,7 @@ function broadcastListenerCount() {
 // Cargar bloqueos al iniciar
 async function loadBlockedClients() {
   try {
-    const blockedSessions = await blockingService.getActiveBlocks();
+    const blockedSessions = await blockingService.getBlockedClients();
     blockedSessions.forEach(session => {
       blockedClientIds.add(session.client_id);
     });
@@ -220,17 +214,11 @@ async function initializeApp() {
 
 // Inicializar y arrancar servidor
 initializeApp().then(() => {
-  if (isPassenger) {
-    server.listen('passenger', () => {
-      console.log('Diveca Radio ejecutandose bajo Passenger');
-    });
-  } else {
-    const PORT = process.env.PORT || config.server.port || 3002;
-    server.listen(PORT, () => {
-      console.log('Diveca Radio ejecutandose en puerto ' + PORT);
-      console.log('Health check: http://localhost:' + PORT + '/health');
-    });
-  }
+  const PORT = process.env.PORT || config.server.port || 3002;
+  server.listen(PORT, () => {
+    console.log('Diveca Radio ejecutandose en puerto ' + PORT);
+    console.log('Health check: http://localhost:' + PORT + '/health');
+  });
 });
 
 process.on('SIGTERM', () => {

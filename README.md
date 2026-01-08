@@ -23,6 +23,3 @@ Ver .env.example
 - POST /logout - Logout
 - GET /me - Usuario actual
 - WS /ws - WebSocket chat
-
-## Plesk/Passenger
-Archivo de inicio: app.js

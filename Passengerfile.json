@@ -1,6 +1,0 @@
-{
-    "passenger_app_type": "node",
-    "passenger_startup_file": "app.js",
-    "passenger_app_env": "production",
-    "passenger_nodejs": "/usr/bin/node"
-}

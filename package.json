@@ -11,8 +11,7 @@
     "migrate": "node scripts/migrate-database.js",
     "setup": "npm run migrate && node scripts/setup-database.js",
     "test": "node scripts/test-basic.js",
-    "health": "node scripts/health-check.js",
-    "postinstall": "node scripts/setup-database.js"
+    "health": "node scripts/health-check.js"
   },
   "repository": {
     "type": "git",
